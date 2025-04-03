@@ -1,0 +1,144 @@
+\documentclass[a4paper, 11pt, twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[czech,shorthands=off]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[left=1.3cm, text={18.6cm, 26cm}, centering, top=1.8cm]{geometry}
+\usepackage{hyperref}
+\usepackage{amsthm, amssymb, amsmath}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definice}
+
+\theoremstyle{definition}
+\newtheorem{sentence}{Věta}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+\begin{titlepage}
+\begin{center}
+    
+    \Huge{
+    \textsc{
+    Vysoké učení technické v Brně\\[0.5em]}
+    }
+    \huge{
+    \textsc{
+    Fakulta informačních technologií}\\
+    \vspace{\stretch{0.382}}
+    }
+    {\LARGE
+    Typografie a publikování -- 2. projekt\\[0.6em]
+    Sazba dokumentů a matematických výrazů\\
+    }
+    \vspace{\stretch{0.618}}
+\end{center}
+
+{\Large 2025 \hfill
+Jakub Králik (xkralij00)}
+
+\end{titlepage}
+
+
+\section*{Úvod}
+V této úloze vysázíme titulní stranu a ukázku matematického textu,
+v němž se vyskytují například
+rovnice \eqref{eq7} na straně \pageref{def2}, Věta \ref{veta1} nebo Definice \ref{def2}.
+Pro vytvoření těchto odkazů používáme kombinace příkazů
+\texttt{\textbackslash label}, \texttt{\textbackslash ref}, \texttt{\textbackslash eqref} a \texttt{\textbackslash pageref}.
+Před odkazy patří nezlomitelná mezera.
+Text zvýrazníme pomocí příkazu \texttt{\textbackslash emph}, strojopisné písmo pomocí \texttt{\textbackslash tesxttt}.
+Pro \LaTeX ové příkazy (s obráceným lomítkem) použijeme \texttt{\textbackslash verb}.
+
+Titulní strana je vysázena prostředím \texttt{titlepage} a~ nadpis je v optickém středu
+s využitím \emph{zlatého řezu}, který byl probrán na přednášce.
+Na titulní straně jsou tři různé velikosti písma a mezi dvojicemi řádků textu
+je řádkování se zadanou  velikostí 0,5\,em a 0,6\,em\footnote{Použijte správnou velikost mezery mezi číslem a jednotkou.}.
+
+\section{Matematický text}
+Symboly číselných množin sázíme makrem \texttt{\textbackslash mathbb},
+kaligrafická písmena  makrem \texttt{\textbackslash mathcal}.
+Pozor na tvar i sklon řeckých písmen: srovnejte \texttt{\textbackslash rho} a \texttt{\textbackslash varrho}.
+Konstrukce \texttt{\$\{\}\$} nebo \texttt{\textbackslash mbox\{\}} zabrání zalomení výrazu.
+
+Pro definice a věty slouží prostředí definovaná příkazem \texttt{\textbackslash newtheorem} z balíku amsthm.
+Tato prostředí obracejí význam \texttt{\textbackslash emph}:
+uvnitř textu sázeného kurzívou se zvýrazňuje písmem v základním řezu.
+Důkazy se někdy ukončují značkou \texttt{\textbackslash qed}.
+
+\subsection{Pseudometrický prostor}
+Pro zarovnání rovností a nerovnosti pod sebe použijte vhodné prostředí.
+
+\begin{definition}
+V pseudometrickém prostoru \emph{$\mathcal{M}=(M,\varrho)$ značí $M$ množinu bodů,
+$\varrho: M\times M\rightarrow\mathbb{R}$ je zobrazení zvané \emph{pseudometrika}, které pro každé body $x,y,z\in M$ splňuje následující podmínky:}
+\begin{eqnarray}
+\label{eq1}\varrho(x,x)&=&0\\
+\label{eq2}\varrho(x,y)&=&\varrho(y,x)\\
+\label{eq3}\varrho(x,y)+\varrho(y,z)&\geq&\varrho(x,z)
+\end{eqnarray}
+\end{definition}
+
+\subsection{Metrika}
+Funkční hodnota pseudometriky $\varrho$ se nazývá \emph{vzdálenost}.
+Vzdálenost každých dvou bodů je nezáporná.
+\begin{sentence}\label{veta1}
+\emph{Pro každé dva body $x,y\in M$ pseudometrického prostoru $(M,\varrho)$ platí $\varrho(x,y)\geq0$.}
+\end{sentence}
+
+Důkaz: Nechť $x,y\in M$ a označme $d=\varrho(x,y)$. Využitím \eqref{eq2} máme $2d=\varrho(x,y)+\varrho(y,x)$, z nerovnosti \eqref{eq3} vyplýva $2d\geq\varrho(x,x)$ a z nerovnosti \eqref{eq1} dostaneme $2d\geq\varrho(x,x)=0$. Odtud plyne $d\geq0$.\qed
+
+Speciálním případem pseudometrických prostorů jsou prostory metrické, v nichž dva různé body mají vždy kladnou vzdálenost.
+
+\begin{definition}\label{def2}
+\emph{Nechť $\mathcal{M}=(M,\varrho)$ je pseudometrický prostor, v němž platí $\varrho(x,y)>0$, kdykoliv $x\neq y$. Potom $\mathcal{M}$ se nazývá metrický prostor a $\varrho$ je jeho metrika.}
+\end{definition}
+
+\section{Rovnice}
+Velikost závorek a svislých čar je potřeba přizpůsobit jejich obsahu.
+K tomu jsou určeny modifikátory \texttt{\textbackslash left} a \texttt{\textbackslash right}.
+
+\begin{eqnarray}
+\lim_{p\to 0} \left(\frac{1}{n} \sum\limits _{i=1}^n x_i^p\right)^\frac{1}{p}=\left(\prod\limits _{i=1}^n x_i\right)^\frac{1}{n}
+\end{eqnarray}
+
+Zde vidíme, jak se vysází proměnná určující limitu v běžném textu: $\lim_{m\to\infty}f(m)$.
+Podobně je to i s dalšími symboly jako $\bigcup_{N\in\mathcal{M}}N$ či $\sum_{i=1}^m x_i^2$.
+S vynucením méně úsporné sazby příkazem \texttt{\textbackslash limits} budou vzorce vysázeny v podobě $\lim\limits_{m\to\infty}f(m)$ a $\sum\limits_{i=1}^m x_i^2$.
+Složitější matematické formule sázíme mimo plynulý text pomocí prostředí \texttt{displaymath}.
+
+\begin{eqnarray}
+\lim_{n\to\infty}\left(1+\frac{x}{n}\right)^n&=&\sum\limits_{n=0}^\infty \frac{x^n}{n!}\\
+\sum\limits_{\emptyset\neq X\subseteq P} (-1)^{|X|-1}\left|\bigcap X\right|&=&\left|\bigcup P\right|\\
+\label{eq7}-\int_{a}^{b}f(x)\:dx&=&\int_{b}^{a}f(y)\:dy
+\end{eqnarray}
+Nezapomeňte rovnice, na které se odkazujete, označit vhodným jménem pomocí \texttt{\textbackslash label}.
+
+\section{Matice}
+Pro sázení matic se používá prostředí \texttt{array} a závorky s výškou nastavenou pomocí
+\texttt{\textbackslash left}, \texttt{\textbackslash right}.
+
+$$
+D=\left|\begin{array}{cccc}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\cdots&a_{mn}
+\end{array}\right|=\left|\begin{array}{cc}
+x&y\\
+t&w 
+\end{array}\right|=xw-yt$$
+
+Prostředí \texttt{array} lze úspěšně využít i jinde,
+například na pravé straně následující definiční rovnosti.
+$$B_n=\left\{\begin{array}{l l}
+1& \text{pro } n=0  \\
+\sum\limits_{k=0}^{n-1}\binom{n}{k}B_k& \text{pro } n\geq 1
+\end{array}\right.$$
+Jestliže sázíme jen levou složenou závorku, pak za párovým \texttt{\textbackslash right}
+místo závorky píšeme tečku.
+\end{document}
